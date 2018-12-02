@@ -7,10 +7,10 @@ authors:
 homepage: https://pub.dartlang.org/packages/inject
 
 environment:
-  sdk: '>=2.0.0-dev.30 <2.0.0'
+  sdk: '>=2.0.0-dev.30 <3.0.0'
 
 dependencies:
-  analyzer: ^0.31.1
+  analyzer: ^0.32.4
   build: ^0.12.0+2
   code_builder: ^3.0.3
   collection: ^1.14.7
@@ -18,7 +18,7 @@ dependencies:
   logging: ^0.11.3+1
   meta: ^1.1.2
   path: ^1.5.1
-  quiver: ^0.28.0
+  quiver: ^2.0.1
   stack_trace: ^1.9.2
 
 dev_dependencies:

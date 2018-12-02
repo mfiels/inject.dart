@@ -15,6 +15,8 @@ import '../source/symbol_path.dart';
 
 import 'abstract_builder.dart';
 
+const _jsonDecoder = JsonDecoder();
+
 /// Generates code for a dependency injection-aware library.
 class InjectCodegenBuilder extends AbstractInjectBuilder {
   final bool _useScoping;
@@ -37,7 +39,7 @@ class InjectCodegenBuilder extends AbstractInjectBuilder {
     // We initially read in our <name>.inject.summary JSON blob, parse it, and
     // use it to generate a "{className}$Injector" Dart class for each @injector
     // annotation that was processed and put in the summary.
-    final summary = LibrarySummary.parseJson(JSON.decode(
+    final summary = LibrarySummary.parseJson(_jsonDecoder.convert(
       await buildStep.readAsString(buildStep.inputId),
     ));
 
@@ -82,7 +84,7 @@ class _AssetSummaryReader implements SummaryReader {
   Future<LibrarySummary> read(String package, String path) {
     return _buildStep
         .readAsString(new AssetId(package, path))
-        .then(JSON.decode)
+        .then(_jsonDecoder.convert)
         .then((json) => LibrarySummary.parseJson(json));
   }
 }

@@ -80,7 +80,7 @@ class LibrarySummary {
 
 InjectorSummary _injectorFromJson(Uri assetUri, Map<String, dynamic> json) {
   String name = json['name'] as String;
-  List<SymbolPath> modules = (json['modules'] as List<String>)
+  List<SymbolPath> modules = (json['modules'].cast<String>())
       .map(Uri.parse)
       .map((e) => new SymbolPath.fromAbsoluteUri(e))
       .toList();
